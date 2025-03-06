@@ -11,7 +11,7 @@ M.file_being_previewed = nil
 function M.start_server()
   local plugin_path = debug.getinfo(1, "S").source:sub(2) -- Get the full file path
   local plugin_dir = vim.fn.fnamemodify(plugin_path, ":h") -- Get the directory path
-  local swagger_ui_watcher_path = vim.fn.fnamemodify(plugin_dir, ":h:h") .. "/node_modules/.bin/swagger-ui-watcher"
+  local swagger_ui_watcher_path = vim.fn.system("which swagger-ui-watcher"):gsub("\n", "")
 
   local swagger_path = vim.fn.expand "%:p"
 
